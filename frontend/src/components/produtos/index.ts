@@ -1,1 +1,1 @@
-export {CadastroProdutos} from './cadastro'
+export  {CadastroProdutos} from './cadastro'

@@ -19,6 +19,7 @@ export const Input:  React.FC<InputProps> = ({
             <label className="label" htmlFor={id}>{label}</label>
             <div className="control">
                 <input 
+                    style={{ backgroundColor: '#1E1E2F', color: '#FFF', border: '1px solid #3E3E55' }}
                     className="input" 
                     id={id}
                     {...inputProps}

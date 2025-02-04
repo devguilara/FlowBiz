@@ -1,4 +1,4 @@
-package com.devguiara.backend;
+package com.devguilara.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

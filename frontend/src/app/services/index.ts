@@ -1,0 +1,1 @@
+export {userProdutoService} from './produto.service'
