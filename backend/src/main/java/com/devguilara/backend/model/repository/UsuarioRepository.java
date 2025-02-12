@@ -1,5 +1,10 @@
 package com.devguilara.backend.model.repository;
 
+import com.devguilara.backend.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Usuario extends JpaRepository<Usuario, Integer> {}
+import java.util.Optional;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    Optional<Usuario> findByEmail(String email);
+}
