@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("http://localhost:3000")
 public class AuthController {
 
     private final UsuarioRepository usuarioRepository;
@@ -32,11 +32,12 @@ public class AuthController {
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
             if (passwordEncoder.matches(loginRequest.getPassword(), usuario.getPassword())) {
-                //return jwtService.generateToken(usuario.getEmail()); mostrar token
-                return usuario.getNome() + " Autenticado";
+                // Gera o token com o nome do usuário no payload
+                String token = jwtService.generateToken(usuario.getEmail(), usuario.getNome()); // Aqui passa o nome do usuário
+                return "Logado! Token: " + token + usuario.getNome();
             }
         }
-        throw new RuntimeException("Usuario ou senha invalidos");
+        throw new RuntimeException("Usuário ou senha inválidos");
     }
 }
 

@@ -17,14 +17,14 @@ export const CadastroProdutos: React.FC = () => {
       alert('Por favor, insira um preço válido.');
       return;
     }
-  
+
     const produto: Produto = {
       sku,
       preco: parseFloat(preco),
       nome,
       descricao,
     };
-  
+
     if (id) {
       produto.id = id;
       service.atualizar(produto).then(() => {
@@ -36,67 +36,83 @@ export const CadastroProdutos: React.FC = () => {
       });
     }
   };
+
   return (
     <Layout title="Cadastro de Produtos">
-        <div className="container">
-          <div className="box" style={{ backgroundColor: '#2D2D44', borderRadius: '12px', boxShadow: '0 4px 14px rgba(0,0,0,0.4)', padding: '2rem' }}>           
-            {id &&             
-                <div className="columns">
-                <Input label="Código:" columnClass="is-half" value={id} id="inpId" disabled />
-                </div>
-            }
+      <div className="container">
+        <div
+          className="box"
+          style={{
+            backgroundColor: '#2D2D44',
+            borderRadius: '12px',
+            boxShadow: '0 4px 14px rgba(0,0,0,0.4)',
+            padding: '2rem',
+          }}
+        >
+          {id && (
             <div className="columns">
-              <Input
-                label="SKU:*"
-                columnClass="is-half"
-                onChange={setSku}
-                value={sku}
-                id="inpSku"
-                placeholder="Digite o SKU"
-                required
-              />
-              <Input
-                label="Preço:*"
-                columnClass="is-half"
-                onChange={setPreco}
-                value={preco}
-                id="inpPreco"
-                placeholder="Digite o preço do produto"
+              <Input label="Código:" columnClass="is-half" value={id} id="inpId" disabled />
+            </div>
+          )}
+          <div className="columns">
+            <Input
+              label="SKU:*"
+              columnClass="is-half"
+              onChange={setSku}
+              value={sku}
+              id="inpSku"
+              placeholder="Digite o SKU"
+              required
+            />
+            <Input
+              label="Preço:*"
+              columnClass="is-half"
+              onChange={setPreco}
+              value={preco}
+              id="inpPreco"
+              placeholder="Digite o preço do produto"
+              required
+            />
+          </div>
+
+          <div className="columns">
+            <Input
+              label="Nome:*"
+              columnClass="is-full"
+              onChange={setNome}
+              value={nome}
+              id="inpNome"
+              placeholder="Digite o nome do produto"
+              required
+            />
+          </div>
+
+          <div className="field">
+            <label className="label has-text-white" htmlFor="inpDescricao">
+              Descrição: *
+            </label>
+            <div className="control">
+              <textarea
+                className="textarea"
+                id="inpDescricao"
+                value={descricao}
+                onChange={(e) => setDescricao(e.target.value)}
+                placeholder="Digite a descrição do produto"
+                style={{
+                  backgroundColor: '#1E1E2F',
+                  color: '#FFF',
+                  border: '1px solid #3E3E55',
+                  borderRadius: '8px',
+                  padding: '1rem',
+                  fontSize: '1rem',
+                }}
                 required
               />
             </div>
+          </div>
 
-            <div className="columns">
-              <Input
-                label="Nome:*"
-                columnClass="is-full"
-                onChange={setNome}
-                value={nome}
-                id="inpNome"
-                placeholder="Digite o nome do produto"
-                required
-              />
-            </div>
-
-            <div className="field">
-              <label className="label has-text-white" htmlFor="inpDescricao">
-                Descrição: *
-              </label>
-              <div className="control">
-                <textarea
-                  className="textarea"
-                  id="inpDescricao"
-                  value={descricao}
-                  onChange={(e) => setDescricao(e.target.value)}
-                  placeholder="Digite a descrição do produto"
-                  style={{ backgroundColor: '#1E1E2F', color: '#FFF', border: '1px solid #3E3E55' }}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="field is-grouped is-grouped-right mt-4">
-              <div className="control">
+          <div className="field is-grouped is-grouped-right mt-4">
+            <div className="control">
               <button
                 onClick={submit}
                 className="button is-link is-medium"
@@ -104,6 +120,8 @@ export const CadastroProdutos: React.FC = () => {
                   backgroundColor: '#8257E6',
                   border: 'none',
                   transition: 'background-color 0.3s ease, transform 0.3s ease',
+                  padding: '0.8rem 1.8rem',
+                  fontSize: '1.1rem',
                 }}
                 onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#6931CA')}
                 onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#8257E6')}
@@ -120,6 +138,8 @@ export const CadastroProdutos: React.FC = () => {
                   backgroundColor: '#FF5F5F',
                   border: 'none',
                   transition: 'background-color 0.3s ease, transform 0.3s ease',
+                  padding: '0.8rem 1.8rem',
+                  fontSize: '1.1rem',
                 }}
                 onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#D94343')}
                 onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#FF5F5F')}
@@ -128,10 +148,10 @@ export const CadastroProdutos: React.FC = () => {
               >
                 Voltar
               </button>
-              </div>
             </div>
           </div>
         </div>
+      </div>
     </Layout>
   );
 };

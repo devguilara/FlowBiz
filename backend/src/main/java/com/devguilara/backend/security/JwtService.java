@@ -11,10 +11,11 @@ import java.util.Date;
 public class JwtService {
     private final String SECRET_KEY = "flowbizsenhacriptografada";
 
-    public String generateToken(String email) {
+    public String generateToken(String email, String nome) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
         return JWT.create()
                 .withSubject(email)
+                .withClaim("name", nome)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
                 .sign(algorithm);

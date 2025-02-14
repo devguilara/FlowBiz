@@ -1,5 +1,7 @@
 import Head from 'next/head';
-import {Layout} from 'components';
+import { Layout } from 'components'; // Certifique-se de que o caminho está correto
+import { LoginPage } from 'components';
+
 const Home: React.FC = () => {
   return (
     <div>
@@ -7,13 +9,9 @@ const Home: React.FC = () => {
         <title>FlowBiz</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      
-      <Layout title='Home'/>
-
-      </div>
-  )
-}
+        <LoginPage />
+    </div>
+  );
+};
 
 export default Home;
-
